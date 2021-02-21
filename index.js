@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Manager = require('./lib/Manager.js');
+const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
 const teamMembers = [];
 
 function memberMenu() {
@@ -43,7 +46,7 @@ inquirer
             type: "input",
             name: "employeeID",
             message: "What is the team manager's id"
-        },
+        }, 
         {
             type: "input",
             name: "managerEmail",
@@ -56,7 +59,18 @@ inquirer
         }
     ])
     .then((answers) => {
-        teamMembers.push(answers)
+        // Maybe this is where the Class goes.
+        // Make a new Manager instantiation.
+
+        const manager = new Manager(
+            `${answers.managerName}`, 
+            `${answers.employeeID}`, 
+            `${answers.managerEmail}`, 
+            `${answers.managerOffice}`
+            );
+
+        teamMembers.push(manager);
+
         memberMenu()
  
         const index = './output/index.html';
@@ -64,7 +78,8 @@ inquirer
         // fs.writeFile(index, answers, (err) =>
         //     err ? console.log(err) : console.log('Success!')
         // ); 
-    });
+    })
+    .catch(err => console.log(err));;
  
 
 
@@ -94,7 +109,16 @@ function askEngineer() {
             } 
         ])
         .then((answers) => {
-            teamMembers.push(answers)
+
+            const engineer = new Engineer(
+                `${answers.engineerName}`, 
+                `${answers.employeeID}`, 
+                `${answers.engineerEmail}`, 
+                `${answers.engineerGitHub}`
+                );
+    
+            teamMembers.push(engineer);
+
             memberMenu()
         });
 };
@@ -126,7 +150,15 @@ function askIntern() {
             } 
         ])
         .then((answers) => {
-            teamMembers.push(answers)
+
+            const intern = new Intern(
+                `${answers.internName}`, 
+                `${answers.employeeID}`, 
+                `${answers.internEmail}`, 
+                `${answers.internSchool}`
+                );
+    
+            teamMembers.push(intern);
             memberMenu()
         });
 };

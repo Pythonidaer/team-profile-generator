@@ -32,9 +32,12 @@
 
 [npm inquirer](https://www.npmjs.com/package/inquirer)
 
-[]()
-[]()
-[]()
+[Intro to Jest: Web Dev Simplified](https://www.youtube.com/watch?v=FgnxcUQ5vho&t=6s)
+
+[Jest docs](https://jestjs.io/docs/en/getting-started)
+
+[How not to test](https://stackoverflow.com/questions/50091438/jest-how-to-mock-one-specific-method-of-a-class)
+
 []()
 []()
 []()

@@ -1,26 +1,26 @@
 const Engineer = require('../lib/Engineer');
 
-describe("Employee", () => {
-    it("should...", () => {
-      const getName = Engineer.prototype.getName = jest.fn();   
-      const getId = Engineer.prototype.getId = jest.fn();
-      const getEmail = Engineer.prototype.getEmail = jest.fn();
-      const getGithub = Engineer.prototype.getGithub = jest.fn();
-      const getRole = Engineer.prototype.getRole = jest.fn();
-      const jester = new Engineer('jester', 123, 'jest@node.org', 'jester1');
-      const expected = {
-        name: 'jester',
-        id: 123,
-        email: 'jest@node.org',
-        github: 'jester1'
-      }
-  
-      jester.getName();
-      jester.getId();
-      jester.getEmail();
-      jester.getRole();
-      jester.getGithub();
-  
-      expect(jester).toEqual(expected);
-    });
-  });
+  describe("Engineer", () => {
+    it("is supposed to", () => {
+      // instantiate class with string name, integer id, string email and string github name
+      const jester = new Engineer("jester", 978, "developer@aol.com", "Deviloper");
+      // expect to be specific string
+      expect(jester.name).toBe("jester");
+      // expect to be specific integer
+      expect(jester.id).toBe(978);
+      // expect to be specific string
+      expect(jester.email).toBe("developer@aol.com");
+      // expect to be specific string
+      expect(jester.github).toBe("Deviloper");
+      // expects function to log same as jester.name
+      expect(jester.getName()).toBe("jester");
+      // expects function to log string version of jester.id
+      expect(jester.getId()).toBe("978");
+      // expects function to log same as jester.email
+      expect(jester.getEmail()).toBe("developer@aol.com");
+      // expects function to log same as jester.github
+      expect(jester.getGithub()).toBe("Deviloper");
+      // expects function to log Engineer as role
+      expect(jester.getRole()).toBe("Engineer");
+    })
+  })

@@ -32,6 +32,7 @@ function memberMenu() {
                 case "I don't want to add any more team members":
 
                     const indexHTML = './dist/index.html';
+                    // const indexHTML = './sample.html';
 
                     const startingHTML = `
 <!DOCTYPE html>
@@ -68,13 +69,13 @@ function memberMenu() {
                                 const managerCard = `
                 <div class="card mb-4 mr-sm-4 bg-light" style="width: 17rem; box-shadow: 6px 5px 5px 1px #888!important">
                     <div class="card-header bg-primary" style="margin-right: -1px;">
-                        <h2 class="text-light">${member.name}</h2>
+                        <h2 class="text-light">${member.getName()}</h2>
                         <h3 class="text-light"><i class="fas fa-mug-hot pr-2"></i>${member.getRole()}</h3>
                     </div>
                     <div class="bg-light py-4 px-3">            
                         <ul class="list-group list-group-flush border rounded" style="border: 1px solid rgba(0,0,0,.125)">
-                            <li class="list-group-item">ID: ${member.id}</li>
-                            <li class="list-group-item">Email: <a href="mailto:${member.email}?" target="_blank" rel="noopener">${member.email}</a></li>
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}?" target="_blank" rel="noopener">${member.getEmail()}</a></li>
                             <li class="list-group-item">Officer number: ${member.officeNumber}</li>
                         </ul>
                     </div>
@@ -89,14 +90,14 @@ function memberMenu() {
                                 const engineerCard = `
                 <div class="card mb-4 mr-sm-4 bg-light" style="width: 17rem; box-shadow: 6px 5px 5px 1px #888!important">
                     <div class="card-header bg-primary" style="margin-right: -1px;">
-                        <h2 class="text-light">${member.name}</h2>
+                        <h2 class="text-light">${member.getName()}</h2>
                         <h3 class="text-light"><i class="fas fa-glasses pr-2"></i>${member.getRole()}</h3>
                     </div>
                     <div class="bg-light py-4 px-3">            
                         <ul class="list-group list-group-flush border rounded" style="border: 1px solid rgba(0,0,0,.125)">
-                            <li class="list-group-item">ID: ${member.id}</li>
-                            <li class="list-group-item">Email: <a href="mailto:${member.email}" target="_blank" rel="noopener">${member.email}</a></li>
-                            <li class="list-group-item">GitHub: <a href="https://github.com/${member.github}" target="_blank" rel="noopener">${member.github}</a></li>
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}" target="_blank" rel="noopener">${member.getEmail()}</a></li>
+                            <li class="list-group-item">GitHub: <a href="https://github.com/${member.getGithub()}" target="_blank" rel="noopener">${member.getGithub()}</a></li>
                         </ul>
                     </div>
                 </div>`;
@@ -110,14 +111,14 @@ function memberMenu() {
                                 const internCard = `
                 <div class="card mb-4 mr-sm-4 bg-light" style="width: 17rem; box-shadow: 6px 5px 5px 1px #888!important">
                     <div class="card-header bg-primary" style="margin-right: -1px;">
-                        <h2 class="text-light">${member.name}</h2>
+                        <h2 class="text-light">${member.getName()}</h2>
                         <h3 class="text-light"><i class="fas fa-user-graduate pr-2"></i>${member.getRole()}</h3>
                     </div>
                     <div class="bg-light py-4 px-3">            
                         <ul class="list-group list-group-flush border rounded" style="border: 1px solid rgba(0,0,0,.125)">
-                            <li class="list-group-item">ID: ${member.id}</li>
-                            <li class="list-group-item">Email: <a href="mailto:${member.email}" target="_blank" rel="noopener">${member.email}</a></li>
-                            <li class="list-group-item">School: ${member.school}</li>
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}" target="_blank" rel="noopener">${member.getEmail()}</a></li>
+                            <li class="list-group-item">School: ${member.getSchool()}</li>
                         </ul>
                     </div>
                 </div>`;
@@ -170,9 +171,6 @@ inquirer
         }
     ])
     .then((answers) => {
-        // Maybe this is where the Class goes.
-        // Make a new Manager instantiation.
-
         const manager = new Manager(
             `${answers.managerName}`, 
             `${answers.employeeID}`, 
@@ -183,14 +181,8 @@ inquirer
         teamMembers.push(manager);
 
         memberMenu()
- 
-        // const index = './output/index.html';
-
-        // fs.writeFile(index, answers, (err) =>
-        //     err ? console.log(err) : console.log('Success!')
-        // ); 
     })
-    .catch(err => console.log(err));;
+    .catch(err => console.log(err));
  
 
 
@@ -220,7 +212,6 @@ function askEngineer() {
             } 
         ])
         .then((answers) => {
-
             const engineer = new Engineer(
                 `${answers.engineerName}`, 
                 `${answers.employeeID}`, 
@@ -231,7 +222,8 @@ function askEngineer() {
             teamMembers.push(engineer);
 
             memberMenu()
-        });
+        })
+        .catch(err => console.log(err));
 };
 
 
@@ -271,5 +263,6 @@ function askIntern() {
     
             teamMembers.push(intern);
             memberMenu()
-        });
+        })
+        .catch(err => console.log(err));
 };

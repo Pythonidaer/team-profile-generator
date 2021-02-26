@@ -38,7 +38,9 @@
 
 [How not to test](https://stackoverflow.com/questions/50091438/jest-how-to-mock-one-specific-method-of-a-class)
 
-[]()
-[]()
-[]()
+[Jest Setup and Teardown](https://jestjs.io/docs/en/setup-teardown#order-of-execution-of-describe-and-test-blocks)
+
+[Jest Using Matchers](https://jestjs.io/docs/en/using-matchers)
+
+[npm nodemon](https://www.npmjs.com/package/nodemon)
 []()

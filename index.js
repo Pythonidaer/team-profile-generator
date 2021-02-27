@@ -23,10 +23,10 @@ function memberMenu() {
         ])
         .then((answers) => {
             switch (answers.memberAdd) {
-                case "Engineer": 
+                case "Engineer":
                     askEngineer();
                     break;
-                case "Intern": 
+                case "Intern":
                     askIntern();
                     break;
                 case "I don't want to add any more team members":
@@ -80,11 +80,11 @@ function memberMenu() {
                         </ul>
                     </div>
                 </div>`;
-                
-                    fs.appendFile(indexHTML, managerCard, (err) => {
-                        if (err) throw err;
-                        console.log('The "data to append" was appended to file!');
-                    });
+
+                                fs.appendFile(indexHTML, managerCard, (err) => {
+                                    if (err) throw err;
+                                    console.log('The "data to append" was appended to file!');
+                                });
                                 break;
                             case "Engineer":
                                 const engineerCard = `
@@ -101,11 +101,11 @@ function memberMenu() {
                         </ul>
                     </div>
                 </div>`;
-                
-                    fs.appendFile(indexHTML, engineerCard, (err) => {
-                        if (err) throw err;
-                        console.log('The "data to append" was appended to file!');
-                    }); 
+
+                                fs.appendFile(indexHTML, engineerCard, (err) => {
+                                    if (err) throw err;
+                                    console.log('The "data to append" was appended to file!');
+                                });
                                 break;
                             case "Intern":
                                 const internCard = `
@@ -122,27 +122,27 @@ function memberMenu() {
                         </ul>
                     </div>
                 </div>`;
-                
-                    fs.appendFile(indexHTML, internCard, (err) => {
-                        if (err) throw err;
-                        console.log('The "data to append" was appended to file!');
-                        }); 
+
+                                fs.appendFile(indexHTML, internCard, (err) => {
+                                    if (err) throw err;
+                                    console.log('The "data to append" was appended to file!');
+                                });
                                 break;
                         }
                     })
 
-                // the third thing in this case statement should be the ending of the html, so fs.appendFile
-                const closingHTML = `
+                    // the third thing in this case statement should be the ending of the html, so fs.appendFile
+                    const closingHTML = `
             </div>
         </div>              
     </body>
 </html>`;
-            fs.appendFile(indexHTML, closingHTML, (err) => {
-                if (err) throw err;
-                console.log('The "data to append" was appended to file!');
-              });    
+                    fs.appendFile(indexHTML, closingHTML, (err) => {
+                        if (err) throw err;
+                        console.log('The "data to append" was appended to file!');
+                    });
                     break;
-            }  
+            }
         });
 }
 
@@ -158,7 +158,7 @@ inquirer
             type: "input",
             name: "employeeID",
             message: "What is the team manager's id"
-        }, 
+        },
         {
             type: "input",
             name: "managerEmail",
@@ -172,18 +172,18 @@ inquirer
     ])
     .then((answers) => {
         const manager = new Manager(
-            `${answers.managerName}`, 
-            `${answers.employeeID}`, 
-            `${answers.managerEmail}`, 
+            `${answers.managerName}`,
+            `${answers.employeeID}`,
+            `${answers.managerEmail}`,
             `${answers.managerOffice}`
-            );
+        );
 
         teamMembers.push(manager);
 
         memberMenu()
     })
     .catch(err => console.log(err));
- 
+
 
 
 // Asks engineer-specific questions
@@ -209,16 +209,16 @@ function askEngineer() {
                 type: "input",
                 name: "engineerGitHub",
                 message: "What is your engineers's GitHub?"
-            } 
+            }
         ])
         .then((answers) => {
             const engineer = new Engineer(
-                `${answers.engineerName}`, 
-                `${answers.employeeID}`, 
-                `${answers.engineerEmail}`, 
+                `${answers.engineerName}`,
+                `${answers.employeeID}`,
+                `${answers.engineerEmail}`,
                 `${answers.engineerGitHub}`
-                );
-    
+            );
+
             teamMembers.push(engineer);
 
             memberMenu()
@@ -250,17 +250,17 @@ function askIntern() {
                 type: "input",
                 name: "internSchool",
                 message: "What is your intern's school?"
-            } 
+            }
         ])
         .then((answers) => {
 
             const intern = new Intern(
-                `${answers.internName}`, 
-                `${answers.employeeID}`, 
-                `${answers.internEmail}`, 
+                `${answers.internName}`,
+                `${answers.employeeID}`,
+                `${answers.internEmail}`,
                 `${answers.internSchool}`
-                );
-    
+            );
+
             teamMembers.push(intern);
             memberMenu()
         })

@@ -1,3 +1,4 @@
+// Import npm inquirer, node's built-in file system, and the three sub-classes for this project.
 const inquirer = require('inquirer');
 const fs = require('fs');
 const Manager = require('./lib/Manager.js');
@@ -6,7 +7,9 @@ const Intern = require('./lib/Intern.js');
 // every card content goes into empty array
 const teamMembers = [];
 
-// user menu to askEngineer or askIntern questions, otherwise, create html and append cards depending on member type, then append closing html and console.log "HTML created!" or something
+// Member menu prompts contain nested switch for if user selects to add Engineer, Intern, or finishes adding team.
+// If finished, HTML start is added and file written, and for reach member, either Manager, Engineer, or Intern cards are added until array has been looped over.
+// Finally, HTML end is appended and app successfully finishes making the HTML.
 function memberMenu() {
     inquirer
         .prompt([
@@ -32,7 +35,6 @@ function memberMenu() {
                 case "I don't want to add any more team members":
 
                     const indexHTML = './dist/index.html';
-                    // const indexHTML = './sample.html';
 
                     const startingHTML = `
 <!DOCTYPE html>
@@ -60,9 +62,7 @@ function memberMenu() {
                     });
 
 
-                    // the second thing in this case statement should be the forEach that triggers fs.appendFile
-                    // for every team member in the array, build a card depending on their role.
-                    // the bottom case console.logs should be changed into buildManager(), buildEngineer() and buildIntern()
+                    // for each object pushed to this array, determine its HTML card by Role value.
                     teamMembers.forEach(member => {
                         switch (member.getRole()) {
                             case "Manager":
@@ -131,7 +131,6 @@ function memberMenu() {
                         }
                     })
 
-                    // the third thing in this case statement should be the ending of the html, so fs.appendFile
                     const closingHTML = `
             </div>
         </div>              
@@ -146,7 +145,8 @@ function memberMenu() {
         });
 }
 
-// Asks manager-specific questions to begin
+// Fires first when app is invoked. Once Manager is added, member menu is called.
+// Asks manager-specific questions, then pushes Manager object to the array.
 inquirer
     .prompt([
         {
@@ -186,7 +186,7 @@ inquirer
 
 
 
-// Asks engineer-specific questions
+// Asks engineer-specific questions, then pushes engineer object to the array.
 function askEngineer() {
     inquirer
         .prompt([
@@ -227,7 +227,7 @@ function askEngineer() {
 };
 
 
-// Asks intern-specific questions
+// Asks intern-specific questions, then pushes intern object to the array.
 function askIntern() {
     inquirer
         .prompt([

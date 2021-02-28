@@ -1,4 +1,4 @@
-# team-profile-generator
+# Team Profile Generator
 [![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Description 
@@ -7,7 +7,7 @@
 -----------
 ## Table of Contents
 
-* [Installation](#installation)
+* [Installation and 'How to' Video](#installation)
 
 * [Usage](#usage)
 
@@ -23,7 +23,7 @@
 
 -----------
 ## Installation 
->[Click Here To Watch How To Video]( )
+>[Click Here To Watch How To Video](https://drive.google.com/file/d/1zs3ZnenvI1r_PqErfZ_FzedxjZQxjazB/view)
 
 1.  Clone this repo to your local computer.
 2.  `npm install` to install dependencies and set up node_module folder.
